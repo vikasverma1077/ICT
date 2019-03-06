@@ -45,7 +45,7 @@ python main.py  --dataset svhn  --num_labeled 100 --num_valid_samples 100 --root
 Running above commands will create a experiment directory with an appropriate name in the directory experiments. For example:experiments/SSL_cifar10_labels_400_valids_500_archcnn13_do0.0_optsgd_lr_0.1_init_lr_0.0_ramp_up_0_ramp_dn_450_ema_d_0.999_m_consis_10.0_type_mse_ramp_0_100_l2_0.0001_eph_400_bs_100_m_sup_a1.0_m_usup_a1.0_pl_mean_teacher_job_id_ 
 
 ### Argument description
-All the results of the paper can be reproduced by using the appropriate args in the above commands. Following are the args that should be varied to reproduce the results of the paper:
+All the results of the paper can be reproduced by using the appropriate args in the above commands. Following are the args that should be varied to reproduce different experiments of the paper:
 
 --dataset : cifar10 or svhn
 
