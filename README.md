@@ -49,9 +49,9 @@ All the results of the paper can be reproduced by using the appropriate args in 
 
 --data_dir : data/cifar10 or data/svhn
 
---num_labeled : number of labeled sample *per class* ( 100/200/400 for cifar10. 25/50/100 for svhn)
+--num_labeled : number of labeled samples *per class* ( 100/200/400 for cifar10, 25/50/100 for svhn)
 
---num_valid_samples : number of validation sample per class ( 500 for cifar10. 100 for svhn)
+--num_valid_samples : number of validation samples *per class* ( 500 for cifar10,  100 for svhn)
 
 --arch : cnn13 or WRN28_2
 
