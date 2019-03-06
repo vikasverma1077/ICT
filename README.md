@@ -5,11 +5,11 @@ This repo consists Pytorch code for the paper Intepolation Consistency Training 
 In this paper, we propose a simple and efficient algorith for training Deep Neural Networks in the Semi-supervised setting, using interpolations between the unlabeled data samples. Our method outperforms (or is competitive with) other recent state-of-the-art methods on CIFAR10 and SVHN datasets, despite having no significant additional computation cost. 
 
 <p align="center">
-    <img src="ict_two_moon.png" height="300">
+    <img src="ict_two_moon.png" height="300" width= "400">
 </p>
 
 <p align="center">
-    <img src="ict_procedure.png" height="300">
+    <img src="ict_procedure.png" height="300" width= "400">
 </p>
 
 
@@ -32,15 +32,29 @@ torchvision 0.2.1
 The precomputed zca files are in data/cifar10/ . You can compute it yourself also by running the script python cifar10_zca.py to compute and save the ZCA for CIFAR10 in the folder data/cifar10/ 
 
 
-## For reproducing results on Cifar10
+### For reproducing results on Cifar10 with 4000 labeled data with CNN13 architechture
 ```
 python main.py  --dataset cifar10  --num_labeled 400 --num_valid_samples 500 --root_dir experiments --data_dir data/cifar10/ --batch_size 100  --arch cnn13 --dropout 0.0 --mixup_consistency 100.0 --pseudo_label mean_teacher  --consistency_rampup_starts 0 --consistency_rampup_ends 100 --epochs 400  --lr_rampdown_epochs 450 --print_freq 200 --momentum 0.9 --lr 0.1 --ema_decay 0.999  --mixup_sup_alpha 1.0 --mixup_usup_alpha 1.0
 ```
 
-## For reproducint results on SVHN
+### For reproducint results on SVHN with 1000 labeled data with CNN13 architechture
 ```
 python main.py  --dataset svhn  --num_labeled 100 --num_valid_samples 100 --root_dir experiments --data_dir data/svhn/ --batch_size 100  --arch cnn13 --dropout 0.0 --mixup_consistency 100.0 --pseudo_label mean_teacher  --consistency_rampup_starts 0 --consistency_rampup_ends 100 --epochs 400  --lr_rampdown_epochs 450 --print_freq 200 --momentum 0.9 --lr 0.1 --ema_decay 0.999  --mixup_sup_alpha 0.1 --mixup_usup_alpha 0.1
 ```
+
+### Argument description
+All the results of the paper can be reproduced by using the appropriate args in the above commands. Following are the args that should be varied to reproduce the results of the paper:
+--dataset : cifar10 or svhn
+--data_dir : data/cifar10 or data/svhn
+--num_labeled : number of labeled sample per class ( 100/200/400 for cifar10. 25/50/100 for svhn)
+--num_valid_samples : number of validation sample per class ( 500 for cifar10. 100 for svhn)
+--arch : cnn13 or WRN28_2
+--mixup_consistency : Max value of consistency coefficient ( check the best values for different experiments in the paper, Section "Experiments"
+--consistency_rampup_ends : number of epochs at which the consistency coefficient reaches it maximum value. In all our experiments, this was set to one-fourth of total number of epochs.
+--epochs : number of epochs 
+--lr_rampdown_epochs: we use cosine ramp-down of learning rate. --lr_rampdown_epochs is the number of epochs at which the learning rate reaches a value of zero. This should be set approximantely 10% more than --epochs
+--mixup_sup_alpha, --mixup_usup_alpha : alpha hyperparameter for mixing in supervised loss and consistency loss, respectively. We used same values for both to do minimal hyperparameter seach. Please see the best values for different experiments in the paper.
+
 
 
 
