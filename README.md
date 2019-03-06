@@ -1,4 +1,4 @@
-# ICT
+# Interpolation Consistency Training (ICT)
 
 This repo consists Pytorch code for the paper Intepolation Consistency Training for Semi-supervised Learning (Insert arxiv link here)
 
@@ -32,13 +32,15 @@ torchvision 0.2.1
 The precomputed zca files are in data/cifar10/ . You can compute it yourself also by running the script python cifar10_zca.py to compute and save the ZCA for CIFAR10 in the folder data/cifar10/ 
 
 
-## For Cifar10
+## For reproducing results on Cifar10
 ```
 python main.py  --dataset cifar10  --num_labeled 400 --num_valid_samples 500 --root_dir experiments --data_dir data/cifar10/ --batch_size 100  --arch cnn13 --dropout 0.0 --mixup_consistency 100.0 --pseudo_label mean_teacher  --consistency_rampup_starts 0 --consistency_rampup_ends 100 --epochs 400  --lr_rampdown_epochs 450 --print_freq 200 --momentum 0.9 --lr 0.1 --ema_decay 0.999  --mixup_sup_alpha 1.0 --mixup_usup_alpha 1.0
 ```
 
-## For SVHN
+## For reproducint results on SVHN
 ```
 python main.py  --dataset svhn  --num_labeled 100 --num_valid_samples 100 --root_dir experiments --data_dir data/svhn/ --batch_size 100  --arch cnn13 --dropout 0.0 --mixup_consistency 100.0 --pseudo_label mean_teacher  --consistency_rampup_starts 0 --consistency_rampup_ends 100 --epochs 400  --lr_rampdown_epochs 450 --print_freq 200 --momentum 0.9 --lr 0.1 --ema_decay 0.999  --mixup_sup_alpha 0.1 --mixup_usup_alpha 0.1
 ```
 
+
+Disclaimer: The purpose of this repo is to provide a user with an easy to use code for reproducing the results in our paper and to use this work in their own research, instead of providing a highly optimized code. This repo uses the code from Mean-Teacher repo : (https://github.com/CuriousAI/mean-teacher)
