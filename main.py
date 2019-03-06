@@ -135,7 +135,7 @@ elif args.dataset == 'svhn':
     num_updates = int((73250/args.batch_size)+1)*args.epochs 
     print ('number of updates', num_updates)
 
-print (args.batch_size, num_updates, args.epochs)
+#print (args.batch_size, num_updates, args.epochs)
 
 #### load data###
 if args.dataset == 'cifar10':
@@ -411,7 +411,7 @@ def main():
             print("Test error on the model with best validation error %s\n" % (best_test_prec1.item()))
             filep.write("Test error on best validation error %s\n" % (best_test_prec1.item()))
         else:
-            print("Test error on the model with best best validation error %s\n" % (best_test_ema_prec1.item()))
+            print("Test error on the model with  best validation error %s\n" % (best_test_ema_prec1.item()))
             filep.write("Test error on best validation error %s\n" % (best_test_ema_prec1.item()))
         
         if args.checkpoint_epochs and (epoch + 1) % args.checkpoint_epochs == 0:
