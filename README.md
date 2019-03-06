@@ -43,4 +43,6 @@ python main.py  --dataset svhn  --num_labeled 100 --num_valid_samples 100 --root
 ```
 
 
-Disclaimer: The purpose of this repo is to provide a user with an easy to use code for reproducing the results in our paper and to use this work in their own research, instead of providing a highly optimized code. This repo uses the code from Mean-Teacher repo : (https://github.com/CuriousAI/mean-teacher)
+
+
+Disclaimer: Instead of providing a highly optimized code, the purpose of this repo is to provide a user with an easy to use code for reproducing the results in our paper and to use this work in their own research. This repo uses the code from Mean-Teacher repo : (https://github.com/CuriousAI/mean-teacher)
