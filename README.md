@@ -57,7 +57,7 @@ All the results of the paper can be reproduced by using the appropriate args in 
 
 --arch : cnn13 or WRN28_2
 
---mixup_consistency : Max value of consistency coefficient ( check the best values for different experiments in the paper, Section "Experiments"
+--mixup_consistency : Max value of consistency coefficient ( check the best values for different experiments in the paper: Section "Experiments")
 
 --consistency_rampup_ends : number of epochs at which the consistency coefficient reaches it maximum value. In all our experiments, this was set to one-fourth of total number of epochs.
 
