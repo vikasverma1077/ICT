@@ -5,11 +5,11 @@ This repo consists Pytorch code for the paper Intepolation Consistency Training 
 In this paper, we propose a simple and efficient algorith for training Deep Neural Networks in the Semi-supervised setting, using interpolations between the unlabeled data samples. Our method outperforms (or is competitive with) other recent state-of-the-art methods on CIFAR10 and SVHN datasets, despite having no significant additional computation cost. 
 
 <p align="center">
-    <img src="ict_two_moon.png" height="300" width= "400">
+    <img src="ict_two_moon.png" height="300" width= "800">
 </p>
 
 <p align="center">
-    <img src="ict_procedure.png" height="300" width= "400">
+    <img src="ict_procedure.png" height="300" width= "800">
 </p>
 
 
@@ -44,7 +44,9 @@ python main.py  --dataset svhn  --num_labeled 100 --num_valid_samples 100 --root
 
 ### Argument description
 All the results of the paper can be reproduced by using the appropriate args in the above commands. Following are the args that should be varied to reproduce the results of the paper:
+
 --dataset : cifar10 or svhn
+
 --data_dir : data/cifar10 or data/svhn
 --num_labeled : number of labeled sample per class ( 100/200/400 for cifar10. 25/50/100 for svhn)
 --num_valid_samples : number of validation sample per class ( 500 for cifar10. 100 for svhn)
