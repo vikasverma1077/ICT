@@ -9,7 +9,7 @@ In this paper, we propose a simple and efficient algorith for training Deep Neur
 </p>
 
 <p align="center">
-    <img src="ict_procedure.png" height="300" width= "800">
+    <img src="ict_procedure.png" height="300" width= "600">
 </p>
 
 
@@ -49,12 +49,19 @@ All the results of the paper can be reproduced by using the appropriate args in 
 
 --data_dir : data/cifar10 or data/svhn
 --num_labeled : number of labeled sample per class ( 100/200/400 for cifar10. 25/50/100 for svhn)
+
 --num_valid_samples : number of validation sample per class ( 500 for cifar10. 100 for svhn)
+
 --arch : cnn13 or WRN28_2
+
 --mixup_consistency : Max value of consistency coefficient ( check the best values for different experiments in the paper, Section "Experiments"
+
 --consistency_rampup_ends : number of epochs at which the consistency coefficient reaches it maximum value. In all our experiments, this was set to one-fourth of total number of epochs.
+
 --epochs : number of epochs 
+
 --lr_rampdown_epochs: we use cosine ramp-down of learning rate. --lr_rampdown_epochs is the number of epochs at which the learning rate reaches a value of zero. This should be set approximantely 10% more than --epochs
+
 --mixup_sup_alpha, --mixup_usup_alpha : alpha hyperparameter for mixing in supervised loss and consistency loss, respectively. We used same values for both to do minimal hyperparameter seach. Please see the best values for different experiments in the paper.
 
 
