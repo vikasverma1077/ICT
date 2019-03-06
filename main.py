@@ -213,9 +213,9 @@ def experiment_name(sl = False,
                     job_id=None,
                     add_name=''):
     if sl:
-        exp_name = 'SL'
+        exp_name = 'SL_'
     else:
-        exp_name = 'SSL'
+        exp_name = 'SSL_'
     exp_name += str(dataset)
     exp_name += '_labels_' + str(labels)
     exp_name += '_valids_' + str(valid)
