@@ -32,11 +32,8 @@ from mean_teacher.run_context import RunContext
 from mean_teacher.data import NO_LABEL
 from mean_teacher.utils import *
 from utils import *
-from plots import *
 from networks.wide_resnet import *
 from networks.lenet import *
-from networks.vggnet import *
-from networks.resnet import *
 
 parser = argparse.ArgumentParser(description='Interpolation consistency training')
 parser.add_argument('--dataset', metavar='DATASET', default='cifar10',
@@ -379,12 +376,12 @@ def main():
         if args.evaluation_epochs and (epoch + 1) % args.evaluation_epochs == 0:
             start_time = time.time()
             if args.psuedo_label == 'single':
-                print("Evaluating the primary model:\n")
-                filep.write("Evaluating the primary model:\n")
+                print("Evaluating the primary model on validation set:\n")
+                filep.write("Evaluating the primary model on validation set:\n")
                 prec1 = validate(validloader, model, global_step, epoch + 1, filep)
             else:
-                print("Evaluating the EMA model:\n")
-                filep.write("Evaluating the EMA model:\n")
+                print("Evaluating the EMA model on validation set:\n")
+                filep.write("Evaluating the EMA model on validation set:\n")
                 ema_prec1 = validate(validloader, ema_model, global_step, epoch + 1, filep, ema= True)
             print("--- validation in %s seconds ---\n" % (time.time() - start_time))
             filep.write("--- validation in %s seconds ---\n" % (time.time() - start_time))
@@ -396,12 +393,14 @@ def main():
                 best_prec1 = max(ema_prec1, best_prec1)
             if is_best:
                 start_time = time.time()
-                print("Evaluating the primary model on test set:\n")
-                filep.write("Evaluating the primary model on test set:\n")
-                best_test_prec1 = validate(testloader, model, global_step, epoch + 1, filep, testing = True)
-                print("Evaluating the EMA model on test set:\n")
-                filep.write("Evaluating the EMA model on test set:\n")
-                best_test_ema_prec1 = validate(testloader, ema_model, global_step, epoch + 1, filep, ema= True, testing = True)
+                if args.psuedo_label == 'single':
+                    print("Evaluating the primary model on test set:\n")
+                    filep.write("Evaluating the primary model on test set:\n")
+                    best_test_prec1 = validate(testloader, model, global_step, epoch + 1, filep, testing = True)
+                else:
+                    print("Evaluating the EMA model on test set:\n")
+                    filep.write("Evaluating the EMA model on test set:\n")
+                    best_test_ema_prec1 = validate(testloader, ema_model, global_step, epoch + 1, filep, ema= True, testing = True)
                 print("--- testing in %s seconds ---\n" % (time.time() - start_time))
                 filep.write("--- testing in %s seconds ---\n" % (time.time() - start_time))
         
@@ -705,10 +704,9 @@ def train(trainloader,unlabelledloader, model, ema_model, optimizer, epoch, file
                 'Time {meters[batch_time]:.3f}\t'
                 'Data {meters[data_time]:.3f}\t'
                 'Class {meters[class_loss]:.4f}\t'
-                'Cons {meters[cons_loss]:.4f}\t'
                 'Mixup Cons {meters[mixup_cons_loss]:.4f}\t'
                 'Prec@1 {meters[top1]:.3f}\t'
-                'Prec@5 {meters[top5]:.3f}\n'.format(
+                'Prec@5 {meters[top5]:.3f}'.format(
                     epoch, i, len(unlabelledloader), meters=meters))
             #print ('lr:',optimizer.param_groups[0]['lr'])
             filep.write(
@@ -716,19 +714,15 @@ def train(trainloader,unlabelledloader, model, ema_model, optimizer, epoch, file
                 'Time {meters[batch_time]:.3f}\t'
                 'Data {meters[data_time]:.3f}\t'
                 'Class {meters[class_loss]:.4f}\t'
-                'Cons {meters[cons_loss]:.4f}\t'
                 'Mixup Cons {meters[mixup_cons_loss]:.4f}\t'
                 'Prec@1 {meters[top1]:.3f}\t'
-                'Prec@5 {meters[top5]:.3f}\n'.format(
+                'Prec@5 {meters[top5]:.3f}'.format(
                     epoch, i, len(unlabelledloader), meters=meters))
     
     train_class_loss_list.append(meters['class_loss'].avg)
     train_ema_class_loss_list.append(meters['ema_class_loss'].avg)
-    train_consistency_loss_list.append(meters['cons_loss'].avg)
-    train_consistency_coeff_list.append(meters['cons_weight'].avg)
-    if args.mixup_consistency:
-        train_mixup_consistency_loss_list.append(meters['mixup_cons_loss'].avg)
-        train_mixup_consistency_coeff_list.append(meters['mixup_cons_weight'].avg)
+    train_mixup_consistency_loss_list.append(meters['mixup_cons_loss'].avg)
+    train_mixup_consistency_coeff_list.append(meters['mixup_cons_weight'].avg)
     train_error_list.append(meters['error1'].avg)
     train_ema_error_list.append(meters['ema_error1'].avg)
     train_lr_list.append(meters['lr'].avg)
