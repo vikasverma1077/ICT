@@ -1,6 +1,0 @@
-data
-data-local/workdir
-data-local/images
-*.pyc
-results
-transient
