@@ -49,8 +49,8 @@ parser.add_argument('--dropout', default=0.0, type=float,
 
 parser.add_argument('--sl', action='store_true',
                     help='only supervised learning: no use of unlabeled data')
-parser.add_argument('--psuedo_label', choices=['single','mean_teacher'],
-                        help='psuedo label generated from either a single model or mean teacher model')
+parser.add_argument('--pseudo_label', choices=['single','mean_teacher'],
+                        help='pseudo label generated from either a single model or mean teacher model')
 parser.add_argument('--optimizer', type = str, default = 'sgd',
                         help='optimizer we are going to use. can be either adam of sgd')
 parser.add_argument('--epochs', default=90, type=int, metavar='N',
@@ -204,7 +204,7 @@ def experiment_name(sl = False,
                     mixup_usup_alpha = 2.0,
                     mixup_hidden = False,
                     num_mix_layer = 3, 
-                    psuedo_label = 'single',
+                    pseudo_label = 'single',
                     epochs=10,
                     batch_size =100,
                     arch = 'WRN28_2',
@@ -246,7 +246,7 @@ def experiment_name(sl = False,
     if mixup_hidden :
         exp_name += 'm_hidden_'
         exp_name += str(num_mix_layer)
-    exp_name += '_pl_'+str(psuedo_label)
+    exp_name += '_pl_'+str(pseudo_label)
     if nesterov:
         exp_name += '_nesterov_'
     if job_id!=None:
@@ -338,7 +338,7 @@ def main():
                     mixup_usup_alpha = args.mixup_usup_alpha,
                     mixup_hidden = args.mixup_hidden,
                     num_mix_layer = args.num_mix_layer,
-                    psuedo_label = args.psuedo_label,
+                    pseudo_label = args.pseudo_label,
                     arch = args.arch,
                     dropout = args.dropout,
                     nesterov = args.nesterov,
@@ -375,7 +375,7 @@ def main():
         filep.write("--- training epoch in %s seconds ---\n" % (time.time() - start_time))
         if args.evaluation_epochs and (epoch + 1) % args.evaluation_epochs == 0:
             start_time = time.time()
-            if args.psuedo_label == 'single':
+            if args.pseudo_label == 'single':
                 print("Evaluating the primary model on validation set:\n")
                 filep.write("Evaluating the primary model on validation set:\n")
                 prec1 = validate(validloader, model, global_step, epoch + 1, filep)
@@ -385,7 +385,7 @@ def main():
                 ema_prec1 = validate(validloader, ema_model, global_step, epoch + 1, filep, ema= True)
             print("--- validation in %s seconds ---\n" % (time.time() - start_time))
             filep.write("--- validation in %s seconds ---\n" % (time.time() - start_time))
-            if args.psuedo_label == 'single':
+            if args.pseudo_label == 'single':
                 is_best = prec1 > best_prec1
                 best_prec1 = max(prec1, best_prec1)
             else:
@@ -393,7 +393,7 @@ def main():
                 best_prec1 = max(ema_prec1, best_prec1)
             if is_best:
                 start_time = time.time()
-                if args.psuedo_label == 'single':
+                if args.pseudo_label == 'single':
                     print("Evaluating the primary model on test set:\n")
                     filep.write("Evaluating the primary model on test set:\n")
                     best_test_prec1 = validate(testloader, model, global_step, epoch + 1, filep, testing = True)
@@ -407,7 +407,7 @@ def main():
         else:
             is_best = False
         
-        if args.psuedo_label == 'single':
+        if args.pseudo_label == 'single':
             print("Test error on the model with best validation error %s\n" % (best_test_prec1.item()))
             filep.write("Test error on best validation error %s\n" % (best_test_prec1.item()))
         else:
@@ -621,7 +621,7 @@ def train(trainloader,unlabelledloader, model, ema_model, optimizer, epoch, file
         
         ### get ema loss. We use the actual samples(not the mixed up samples ) for calculating EMA loss
         minibatch_size = len(target_var)
-        if args.psuedo_label == 'single':
+        if args.pseudo_label == 'single':
             ema_logit_unlabeled = model(u_var)
             ema_logit_labeled = model(input_var)
         else:
