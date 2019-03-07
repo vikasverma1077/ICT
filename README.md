@@ -34,12 +34,12 @@ The precomputed zca files are in data/cifar10/ . You can compute it yourself als
 
 ### For reproducing results on Cifar10 with 4000 labeled data with CNN13 architechture
 ```
-python main.py  --dataset cifar10  --num_labeled 400 --num_valid_samples 500 --root_dir experiments --data_dir data/cifar10/ --batch_size 100  --arch cnn13 --dropout 0.0 --mixup_consistency 100.0 --pseudo_label mean_teacher  --consistency_rampup_starts 0 --consistency_rampup_ends 100 --epochs 400  --lr_rampdown_epochs 450 --print_freq 200 --momentum 0.9 --lr 0.1 --ema_decay 0.999  --mixup_sup_alpha 1.0 --mixup_usup_alpha 1.0
+python main.py  --dataset cifar10  --num_labeled 400 --num_valid_samples 500 --root_dir experiments/ --data_dir data/cifar10/ --batch_size 100  --arch cnn13 --dropout 0.0 --mixup_consistency 100.0 --pseudo_label mean_teacher  --consistency_rampup_starts 0 --consistency_rampup_ends 100 --epochs 400  --lr_rampdown_epochs 450 --print_freq 200 --momentum 0.9 --lr 0.1 --ema_decay 0.999  --mixup_sup_alpha 1.0 --mixup_usup_alpha 1.0
 ```
 
 ### For reproducint results on SVHN with 1000 labeled data with CNN13 architechture
 ```
-python main.py  --dataset svhn  --num_labeled 100 --num_valid_samples 100 --root_dir experiments --data_dir data/svhn/ --batch_size 100  --arch cnn13 --dropout 0.0 --mixup_consistency 100.0 --pseudo_label mean_teacher  --consistency_rampup_starts 0 --consistency_rampup_ends 100 --epochs 400  --lr_rampdown_epochs 450 --print_freq 200 --momentum 0.9 --lr 0.1 --ema_decay 0.999  --mixup_sup_alpha 0.1 --mixup_usup_alpha 0.1
+python main.py  --dataset svhn  --num_labeled 100 --num_valid_samples 100 --root_dir experiments/ --data_dir data/svhn/ --batch_size 100  --arch cnn13 --dropout 0.0 --mixup_consistency 100.0 --pseudo_label mean_teacher  --consistency_rampup_starts 0 --consistency_rampup_ends 100 --epochs 400  --lr_rampdown_epochs 450 --print_freq 200 --momentum 0.9 --lr 0.1 --ema_decay 0.999  --mixup_sup_alpha 0.1 --mixup_usup_alpha 0.1
 ```
 
 Running above commands will create a experiment directory with an appropriate name in the directory experiments. For example:experiments/SSL_cifar10_labels_400_valids_500_archcnn13_do0.0_optsgd_lr_0.1_init_lr_0.0_ramp_up_0_ramp_dn_450_ema_d_0.999_m_consis_10.0_type_mse_ramp_0_100_l2_0.0001_eph_400_bs_100_m_sup_a1.0_m_usup_a1.0_pl_mean_teacher_job_id_ 
