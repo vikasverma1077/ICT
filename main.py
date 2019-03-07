@@ -409,10 +409,10 @@ def main():
         
         if args.pseudo_label == 'single':
             print("Test error on the model with best validation error %s\n" % (best_test_prec1.item()))
-            filep.write("Test error on best validation error %s\n" % (best_test_prec1.item()))
+            filep.write("Test error on the model with best validation error %s\n" % (best_test_prec1.item()))
         else:
             print("Test error on the model with  best validation error %s\n" % (best_test_ema_prec1.item()))
-            filep.write("Test error on best validation error %s\n" % (best_test_ema_prec1.item()))
+            filep.write("Test error on the model with best validation error %s\n" % (best_test_ema_prec1.item()))
         
         if args.checkpoint_epochs and (epoch + 1) % args.checkpoint_epochs == 0:
             save_checkpoint({
