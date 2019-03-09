@@ -213,9 +213,9 @@ def experiment_name(sl = False,
                     job_id=None,
                     add_name=''):
     if sl:
-        exp_name = 'SL'
+        exp_name = 'SL_'
     else:
-        exp_name = 'SSL'
+        exp_name = 'SSL_'
     exp_name += str(dataset)
     exp_name += '_labels_' + str(labels)
     exp_name += '_valids_' + str(valid)
@@ -409,10 +409,10 @@ def main():
         
         if args.pseudo_label == 'single':
             print("Test error on the model with best validation error %s\n" % (best_test_prec1.item()))
-            filep.write("Test error on best validation error %s\n" % (best_test_prec1.item()))
+            filep.write("Test error on the model with best validation error %s\n" % (best_test_prec1.item()))
         else:
             print("Test error on the model with  best validation error %s\n" % (best_test_ema_prec1.item()))
-            filep.write("Test error on best validation error %s\n" % (best_test_ema_prec1.item()))
+            filep.write("Test error on the model with best validation error %s\n" % (best_test_ema_prec1.item()))
         
         if args.checkpoint_epochs and (epoch + 1) % args.checkpoint_epochs == 0:
             save_checkpoint({
@@ -586,8 +586,7 @@ def train(trainloader,unlabelledloader, model, ema_model, optimizer, epoch, file
         
         if args.dataset == 'cifar10':
             input = apply_zca(input, zca_mean, zca_components)
-            u = apply_zca(u, zca_mean, zca_components)
-        
+            u = apply_zca(u, zca_mean, zca_components) 
         lr = adjust_learning_rate(optimizer, epoch, i, len(unlabelledloader))
         meters.update('lr', optimizer.param_groups[0]['lr'])
         
