@@ -10,6 +10,8 @@ from torchvision import datasets
 import torchvision.transforms as transforms
 from itertools import repeat, cycle
 
+
+
 def to_var(x,requires_grad=True):
     if torch.cuda.is_available():
         x = x.cuda()
@@ -35,12 +37,10 @@ def denorm(x):
 
 def apply_zca(data, zca_mean, zca_components):
         temp = data.numpy()
-        #temp = temp.transpose(0,2,3,1)
         shape = temp.shape
         temp = temp.reshape(-1, shape[1]*shape[2]*shape[3])
         temp = np.dot(temp - zca_mean, zca_components.T)
         temp = temp.reshape(-1, shape[1], shape [2], shape[3])
-        #temp = temp.transpose(0, 3, 1, 2)
         data = torch.from_numpy(temp).float()
         return data
         #print (temp)
