@@ -29,7 +29,7 @@ torchvision 0.2.1
 
 ### Data Preprocessing
 
-The precomputed zca files are in data/cifar10/ . You can compute it yourself also by running the script python cifar10_zca.py to compute and save the ZCA for CIFAR10 in the folder data/cifar10/ 
+The precomputed zca files are in data/cifar10/ . You can compute it yourself also by running the script python cifar10_zca.py. This will compute and save the ZCA for CIFAR10 in the folder data/cifar10/ 
 
 
 ### For reproducing results on Cifar10 with 4000 labeled data with CNN13 architechture
