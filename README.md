@@ -1,6 +1,6 @@
 # Interpolation Consistency Training (ICT)
 
-This repo consists Pytorch code for the paper *Intepolation Consistency Training for Semi-supervised Learning* (Insert arxiv link here)
+This repo consists Pytorch code for the paper *Intepolation Consistency Training for Semi-supervised Learning* (https://arxiv.org/abs/1903.03825)
 
 In this paper, we propose a simple and efficient algorithm for training Deep Neural Networks in the Semi-supervised setting. We use interpolations between the unlabeled data samples as the perturbation directions for Consistency-regularization instead of random perturbations or adversarial perturbations. Our method outperforms (or is competitive with) other recent state-of-the-art methods on CIFAR10 and SVHN datasets, despite having no significant additional computation cost. 
 
@@ -14,10 +14,25 @@ In this paper, we propose a simple and efficient algorithm for training Deep Neu
 
 
 
-If you find this work useful and use it on your own research, please cite our [paper](inset link here). 
+If you find this work useful and use it on your own research, please cite our [paper](https://arxiv.org/abs/1903.03825). 
 
 ```
-bibtex here
+@ARTICLE{2019arXiv190303825V,
+       author = {{Verma}, Vikas and {Lamb}, Alex and {Kannala}, Juho and
+         {Bengio}, Yoshua and {Lopez-Paz}, David},
+        title = "{Interpolation Consistency Training for Semi-Supervised Learning}",
+      journal = {arXiv e-prints},
+     keywords = {Statistics - Machine Learning, Computer Science - Artificial Intelligence, Computer Science - Machine Learning},
+         year = "2019",
+        month = "Mar",
+          eid = {arXiv:1903.03825},
+        pages = {arXiv:1903.03825},
+archivePrefix = {arXiv},
+       eprint = {1903.03825},
+ primaryClass = {stat.ML},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2019arXiv190303825V},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
 ```
 
 
