@@ -221,7 +221,7 @@ def load_data_subset(data_aug, batch_size,workers,dataset, data_target_dir, labe
         
         indices_valid = np.hstack([list(filter(lambda idx: labels[idx] == i, indices))[:n_valid] for i in range(n_labels)])
         indices_train = np.hstack([list(filter(lambda idx: labels[idx] == i, indices))[n_valid:n_valid+n] for i in range(n_labels)])
-        indices_unlabelled = np.hstack([list(filter(lambda idx: labels[idx] == i, indices))[:] for i in range(n_labels)])
+        indices_unlabelled = np.hstack([list(filter(lambda idx: labels[idx] == i, indices))[n_valid:] for i in range(n_labels)])
         #print (indices_train.shape)
         #print (indices_valid.shape)
         #print (indices_unlabelled.shape)
