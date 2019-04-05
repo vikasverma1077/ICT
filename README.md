@@ -1,4 +1,4 @@
-# Interpolation Consistency Training (ICT)
+# Interpolation Consistency Training (ICT) for Deep Semi-supervised Learning
 
 This repo consists Pytorch code for the paper *Intepolation Consistency Training for Semi-supervised Learning* (https://arxiv.org/abs/1903.03825)
 
