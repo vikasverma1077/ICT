@@ -1,6 +1,6 @@
-# Interpolation Consistency Training (ICT) for Deep Semi-supervised Learning (Accepted in IJCAI 2019)
+# Interpolation Consistency Training (ICT) for Deep Semi-supervised Learning 
 
-This repo consists Pytorch code for the paper *Intepolation Consistency Training for Semi-supervised Learning* (https://arxiv.org/abs/1903.03825)
+This repo consists Pytorch code for the IJCAI2019 paper *Intepolation Consistency Training for Semi-supervised Learning* (https://arxiv.org/abs/1903.03825)
 
 In this paper, we propose a simple and efficient algorithm for training Deep Neural Networks in the Semi-supervised setting. We use interpolations between the unlabeled data samples as the perturbation directions for Consistency-regularization instead of random perturbations or adversarial perturbations. **Our method outperforms (or is competitive with) other recent state-of-the-art methods on CIFAR10 and SVHN datasets, despite having no significant additional computation cost**. 
 
