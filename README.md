@@ -14,7 +14,7 @@ In this paper, we propose a simple and efficient algorithm for training Deep Neu
 
 
 
-If you find this work useful and use it on your own research, use the following bibtex for our [paper](https://arxiv.org/abs/1903.03825). 
+If you find this work useful and use it on your own research, use the following bibtex to cite our [paper](https://arxiv.org/abs/1903.03825). 
 
 ```
 @inproceedings{Verma:2019:ICT:3367471.3367546,
