@@ -17,22 +17,22 @@ In this paper, we propose a simple and efficient algorithm for training Deep Neu
 If you find this work useful and use it on your own research, use the following bibtex for our [paper](https://arxiv.org/abs/1903.03825). 
 
 ```
-@ARTICLE{2019arXiv190303825V,
-       author = {{Verma}, Vikas and {Lamb}, Alex and {Kannala}, Juho and
-         {Bengio}, Yoshua and {Lopez-Paz}, David},
-        title = "{Interpolation Consistency Training for Semi-Supervised Learning}",
-      journal = {arXiv e-prints},
-     keywords = {Statistics - Machine Learning, Computer Science - Artificial Intelligence, Computer Science - Machine Learning},
-         year = "2019",
-        month = "Mar",
-          eid = {arXiv:1903.03825},
-        pages = {arXiv:1903.03825},
-archivePrefix = {arXiv},
-       eprint = {1903.03825},
- primaryClass = {stat.ML},
-       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2019arXiv190303825V},
-      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
-}
+@inproceedings{Verma:2019:ICT:3367471.3367546,
+ author = {Verma, Vikas and Lamb, Alex and Kannala, Juho and Bengio, Yoshua and Lopez-Paz, David},
+ title = {Interpolation Consistency Training for Semi-supervised Learning},
+ booktitle = {Proceedings of the 28th International Joint Conference on Artificial Intelligence},
+ series = {IJCAI'19},
+ year = {2019},
+ isbn = {978-0-9992411-4-1},
+ location = {Macao, China},
+ pages = {3635--3641},
+ numpages = {7},
+ url = {http://dl.acm.org/citation.cfm?id=3367471.3367546},
+ acmid = {3367546},
+ publisher = {AAAI Press},
+} 
+
+
 ```
 
 
