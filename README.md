@@ -1,6 +1,6 @@
 # Interpolation Consistency Training (ICT) for Deep Semi-supervised Learning 
 
-This repo consists Pytorch code for the IJCAI 2019 paper *Intepolation Consistency Training for Semi-supervised Learning* (https://arxiv.org/abs/1903.03825)
+This repo consists Pytorch code for the 2022 Journal paper, *Interpolation Consistency Training for Semi-supervised Learning*, (https://doi.org/10.1016/j.neunet.2021.10.008)
 
 In this paper, we propose a simple and efficient algorithm for training Deep Neural Networks in the Semi-supervised setting. We use interpolations between the unlabeled data samples as the perturbation directions for Consistency-regularization instead of random perturbations or adversarial perturbations. **Our method outperforms (or is competitive with) other recent state-of-the-art methods on CIFAR10 and SVHN datasets, despite having no significant additional computation cost**. 
 
@@ -17,20 +17,15 @@ In this paper, we propose a simple and efficient algorithm for training Deep Neu
 If you find this work useful and use it on your own research, use the following bibtex to cite our [paper](https://arxiv.org/abs/1903.03825). 
 
 ```
-@inproceedings{Verma:2019:ICT:3367471.3367546,
- author = {Verma, Vikas and Lamb, Alex and Kannala, Juho and Bengio, Yoshua and Lopez-Paz, David},
- title = {Interpolation Consistency Training for Semi-supervised Learning},
- booktitle = {Proceedings of the 28th International Joint Conference on Artificial Intelligence},
- series = {IJCAI'19},
- year = {2019},
- isbn = {978-0-9992411-4-1},
- location = {Macao, China},
- pages = {3635--3641},
- numpages = {7},
- url = {http://dl.acm.org/citation.cfm?id=3367471.3367546},
- acmid = {3367546},
- publisher = {AAAI Press},
-} 
+@article{verma2022ict,
+title = {Interpolation Consistency Training for Semi-supervised Learning},
+author = {Vikas Verma and Kenji Kawaguchi and Alex Lamb and Juho Kannala and Arno Solin and Yoshua Bengio and David Lopez-Paz},
+journal = {Neural Networks},
+volume = {145},
+pages = {90-106},
+year = {2022},
+doi = {https://doi.org/10.1016/j.neunet.2021.10.008}
+}
 
 
 ```
